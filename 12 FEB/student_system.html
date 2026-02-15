@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+</head>
+<body>
+
+    <script>
+        // BONUS 4: Continue System 
+        let allStudents = []; 
+        let addMore = true;
+
+        while (addMore) {
+            // REQUIREMENT 1: Collect Student Information 
+            let name = prompt("Enter Student Name:", "");
+            let age = prompt("Enter Student Age:", "");
+
+            // REQUIREMENT 2: Collect Student Grades 
+            let grades = [];
+            while (true) {
+                let input = prompt("Enter a grade (0-100) or type 'stop' to finish:", "");
+
+                // Handle 'stop' or Cancel
+                if (input === null || input.toLowerCase() === 'stop') {
+                    // BONUS 2: Minimum Grades Check 
+                    // Do not allow finishing unless at least 3 grades are entered
+                    if (grades.length < 3) {
+                        alert("Error: You must enter at least 3 grades before stopping.");
+                        continue;
+                    }
+                    break;
+                }
+
+                let grade = Number(input);
+
+                // BONUS 1: Input Validation 
+                // Check if text instead of number or outside 0-100 range
+                if (isNaN(grade) || input.trim() === "" || grade < 0 || grade > 100) {
+                    alert("Invalid input! Please enter a number between 0 and 100.");
+                } else {
+                    //  REQUIREMENT 2: Store grades in array 
+                    grades.push(grade);
+                }
+            }
+
+            // REQUIREMENT 4: Calculate Statistics 
+            let total = 0;
+            let highest = grades[0];
+            let lowest = grades[0];
+
+            for (let g of grades) {
+                total += g;
+                if (g > highest) highest = g;
+                if (g < lowest) lowest = g;
+            }
+
+            let average = total / grades.length;
+
+            // BONUS 3: Grade Classification 
+            let gradeLevel;
+            if (average >= 90) gradeLevel = "Excellent";
+            else if (average >= 80) gradeLevel = "Very Good";
+            else if (average >= 70) gradeLevel = "Good";
+            else if (average >= 60) gradeLevel = "Pass";
+            else gradeLevel = "Fail";
+
+            // REQUIREMENT 3: Store Data in Object 
+            let student = {
+                name: name,
+                age: age,
+                grades: grades,
+                average: average.toFixed(2),
+                //  REQUIREMENT 5: Status Rules 
+                status: average >= 60 ? "Passed" : "Failed",
+                level: gradeLevel
+            };
+
+            //  LAST BONUS: Store multiple students in an array 
+            allStudents.push(student);
+
+            // REQUIREMENT 5: Display Student Report 
+            let report = `
+- Student Report - 
+Name: ${student.name}
+Age: ${student.age}
+Grades: ${student.grades.join(", ")}
+TOTAL GRADES ENTERED: ${student.grades.length} 
+Average: ${student.average}
+Highest: ${highest}
+Lowest: ${lowest}
+Status: ${student.status}
+Classification: ${student.level} 
+            `;
+            
+            alert(report);
+            console.log(report);
+
+            // BONUS 4: Ask user to enter another student
+            addMore = confirm("Do you want to enter another student?");
+        }
+
+        //  LAST BONUS: Display final summary of all students 
+        console.log("--- FINAL SUMMARY OF ALL STUDENTS ---");
+        allStudents.forEach(s => {
+            console.log(`Student: ${s.name} | Average: ${s.average}`);
+        });
+        alert("All student reports generated. Check the Console (F12) for the final summary.");
+
+    </script>
+</body>
+</html>
