@@ -1,0 +1,58 @@
+/* Matching your specific colors */
+.custom-nav {
+    background-color: #28a745; /* The green from your image */
+}
+
+.hero-section {
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-shop {
+    background-color: #ff7e7e; /* The salmon pink from your image */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-shop:hover {
+    background-color: #ff6666;
+    transform: scale(1.05);
+    color: white;
+}
+
+.cat-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Custom Green for Button & Nav */
+.btn-contact, .custom-nav {
+    background-color: #28a745 !important; 
+    border: none;
+}
+
+.btn-contact:hover {
+    background-color: #218838 !important;
+}
+
+/* Dark Footer */
+.footer-dark {
+    background-color: #343a40;
+    width: 100%;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 15px;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JES Market - Exclusive Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles to maintain your unique design */
+        .custom-nav { background-color: #27ae60; }
+        
+        .coupon-card {
+            background: white;
+            border: 2px dashed #ccc; 
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            height: 100%; /* Ensures all coupons in a row match height */
+        }
+
+        .promo-side {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .promo-side span { font-size: 28px; }
+        .promo-side small { font-size: 12px; text-transform: uppercase; }
+
+        .promo-code {
+            display: inline-block;
+            border: 1px dashed;
+            padding: 5px 15px;
+            font-family: monospace;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* Color Themes */
+        .offer-green { background-color: #27ae60; }
+        .text-green { color: #27ae60; border-color: #27ae60; }
+        
+        .offer-orange { background-color: #e67e22; }
+        .text-orange { color: #e67e22; border-color: #e67e22; }
+
+        .offer-blue { background-color: #3498db; }
+        .text-blue { color: #3498db; border-color: #3498db; }
+
+        footer { background-color: #1a1a1a; }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg custom-nav">
+        <div class="container justify-content-center">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item mx-2"><a class="nav-link text-white fw-bold" href="index.html">Home</a></li>
+                <li class="nav-item mx-2"><a class="nav-link text-white fw-bold" href="categories.html">Categories</a></li>
+                <li class="nav-item mx-2"><a class="nav-link text-white fw-bold" href="offers.html">Offers</a></li>
+                <li class="nav-item mx-2"><a class="nav-link text-white fw-bold" href="Gallery.html">Gallery</a></li>
+                <li class="nav-item mx-2"><a class="nav-link text-white fw-bold" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-5 flex-grow-1">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Exclusive Member Rewards</h2>
+            <p class="text-muted">Clip these digital coupons to save big on your next visit!</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-12 col-lg-6 col-xl-5">
+                <div class="coupon-card shadow-sm">
+                    <div class="promo-side offer-green">
+                        <span>20%</span>
+                        <small>Off</small>
+                    </div>
+                    <div class="p-4 flex-grow-1">
+                        <h5 class="fw-bold">First Order Discount</h5>
+                        <p class="text-secondary small">Valid on all fresh produce items.</p>
+                        <div class="promo-code text-green">FRESH20</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 col-xl-5">
+                <div class="coupon-card shadow-sm">
+                    <div class="promo-side offer-orange">
+                        <span>$10</span>
+                        <small>Back</small>
+                    </div>
+                    <div class="p-4 flex-grow-1">
+                        <h5 class="fw-bold">Weekend Special</h5>
+                        <p class="text-secondary small">Spend $50 or more and save $10.</p>
+                        <div class="promo-code text-orange">SAVE10</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 col-xl-5">
+                <div class="coupon-card shadow-sm">
+                    <div class="promo-side offer-blue">
+                        <span>FREE</span>
+                    </div>
+                    <div class="p-4 flex-grow-1">
+                        <h5 class="fw-bold">Bakery Bonus</h5>
+                        <p class="text-secondary small">Free baguette with any pastry purchase.</p>
+                        <div class="promo-code text-blue">YUMMY</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="text-white text-center py-4 mt-auto">
+        <p class="mb-0">© 2026 JES Market</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
