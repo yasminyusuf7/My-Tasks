@@ -1,6 +1,5 @@
-/* Matching your specific colors */
 .custom-nav {
-    background-color: #28a745; /* The green from your image */
+    background-color: #28a745;
 }
 
 .hero-section {
@@ -12,7 +11,7 @@
 }
 
 .btn-shop {
-    background-color: #ff7e7e; /* The salmon pink from your image */
+    background-color: #ff7e7e; 
     color: white;
     border: none;
     border-radius: 10px;
@@ -56,3 +55,4 @@
     border-color: #28a745;
     box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
 }
+
