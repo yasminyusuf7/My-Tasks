@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .error { color: red; font-weight: bold; }
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Password Security Check</h2>
+    <p>Enter a password (must be at least 8 characters):</p>
+    
+    <input type="text" id="passInput" placeholder="Type password here...">
+    <button onclick="runSecurityCheck()">Check Password</button>
+
+    <p id="displayMessage"></p>
+
+    <script>
+        function runSecurityCheck() {
+            const password = document.getElementById("passInput").value;
+            const display = document.getElementById("displayMessage");
+
+            try {
+                console.log("Starting validation...");
+                
+                // THE TASK LOGIC:
+                if (password.length < 8) {
+                    throw new Error("Password is too short! Must be 8+ characters.");
+                }
+
+                // If no error was thrown, this runs:
+                display.innerText = "✅ Success: Password is valid.";
+                display.className = "success";
+                console.log("Validation passed.");
+
+            } catch (error) {
+                // If the length was < 8, this runs:
+                display.innerText = "❌ Error: " + error.message;
+                display.className = "error";
+                console.error("Validation failed: " + error.message);
+
+            } finally {
+                // This always runs to show the check is over
+                console.log("Security check process completed.");
+            }
+        }
+    </script>
+
+</body>
+</html>
