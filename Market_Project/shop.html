@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FreshMart Products - Hover & Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .products-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 1. THE CARD WITH HOVER */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            /* Smooth transition for the hover effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* The lifting effect you asked for */
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* 2. THE BUTTON */
+        .add-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        /* Button turns darker when mouse is over it */
+        .add-btn:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Our Products</h1>
+
+    <div class="products-container">
+        <div class="card">
+            <img src="https://picsum.photos/id/102/200" alt="Apple">
+            <span class="price">$20</span>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/id/1080/200" alt="Watermelon">
+            <span class="price">$30</span>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/id/429/200" alt="Tomato">
+            <span class="price">$25</span>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+</body>
+</html>
