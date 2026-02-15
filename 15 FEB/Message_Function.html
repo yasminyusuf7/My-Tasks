@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closure Secret Message Task</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .secret-container { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 450px;
+        }
+        input { padding: 8px; width: 250px; margin-bottom: 10px; }
+        button { padding: 8px 15px; cursor: pointer; border: none; border-radius: 5px; }
+        .btn-update { background-color: #ff9800; color: white; }
+        .btn-read { background-color: #4caf50; color: white; }
+        #output { margin-top: 20px; padding: 10px; background: #eee; border-left: 5px solid #2196f3; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <div class="secret-container">
+        <h2>Secret Vault</h2>
+        <input type="text" id="messageInput" placeholder="Type a new secret...">
+        <br>
+        <button class="btn-update" onclick="handleUpdate()">Update Message</button>
+        <button class="btn-read" onclick="handleRead()">Read Message</button>
+
+        <div id="output">Message will appear here...</div>
+    </div>
+
+    <script>
+        
+        function createVault(initialSecret) {
+            let secret = initialSecret; 
+
+            return {
+                updateMessage: function(newMessage) {
+                    secret = newMessage;
+                    console.log("Secret updated successfully.");
+                },
+                readMessage: function() {
+                    return secret;
+                }
+            };
+        }
+
+        
+        const myVault = createVault("Initial Secret");
+
+        const inputField = document.getElementById("messageInput");
+        const outputDiv = document.getElementById("output");
+
+        function handleUpdate() {
+            const val = inputField.value;
+            if (val) {
+                myVault.updateMessage(val); 
+                outputDiv.innerText = "Vault updated! (Read it to see)";
+                inputField.value = ""; 
+            }
+        }
+
+        function handleRead() {
+            const currentSecret = myVault.readMessage(); 
+            outputDiv.innerText = "The Secret is: " + currentSecret;
+        }
+    </script>
+
+</body>
+</html>
