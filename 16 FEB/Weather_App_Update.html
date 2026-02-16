@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Weather Pro</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: grid; place-items: center; height: 100vh; background: #2c3e50; color: white; margin: 0; }
+        .app-card { background: #34495e; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 350px; }
+        select { width: 100%; padding: 12px; margin: 20px 0; border-radius: 8px; border: none; font-size: 1rem; cursor: pointer; }
+        .display-area { height: 120px; display: flex; flex-direction: column; justify-content: center; background: rgba(0,0,0,0.2); border-radius: 10px; padding: 10px; }
+        .temp { font-size: 2.5rem; margin: 5px 0; color: #f1c40f; }
+        .status { font-style: italic; color: #bdc3c7; }
+        .loading-spinner { color: #3498db; font-weight: bold; }
+        .error-msg { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="app-card">
+        <h1>🌍 World Weather</h1>
+        
+        <label for="countrySelect">Choose a Country:</label>
+        <select id="countrySelect" onchange="getWeather()">
+            <option value="" disabled selected>Select a destination...</option>
+            <option value="egypt">Egypt</option>
+            <option value="france">France</option>
+            <option value="japan">Japan</option>
+            <option value="brazil">Brazil</option>
+            <option value="canada">Canada</option>
+        </select>
+
+        <div class="display-area" id="displayArea">
+            <div class="status">Waiting for selection...</div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Our "Database" of fake weather
+        const weatherDatabase = {
+            egypt: { temp: "32°C", cond: "☀️ Sunny & Hot" },
+            france: { temp: "15°C", cond: "🌦️ Light Rain" },
+            japan: { temp: "18°C", cond: "🌸 Pleasant" },
+            brazil: { temp: "28°C", cond: "⛈️ Tropical Storm" },
+            canada: { temp: "-5°C", cond: "❄️ Heavy Snow" }
+        };
+
+        // 2. The Promise 
+        function fetchWeatherFromServer(country) {
+            return new Promise((resolve, reject) => {
+                const randomFailure = Math.random() > 0.95; // 5% chance of "server error"
+
+                setTimeout(() => {
+                    if (randomFailure) {
+                        reject("📡 Server Connection Failed!");
+                    } else {
+                        resolve(weatherDatabase[country]);
+                    }
+                }, 1500);
+            });
+        }
+
+        // 3. The Async Logic
+        async function getWeather() {
+            const country = document.getElementById('countrySelect').value;
+            const display = document.getElementById('displayArea');
+
+            // Set UI to Loading State
+            display.innerHTML = `<div class="loading-spinner">📡 Contacting Satellite...</div>`;
+
+            try {
+                // The "Await" happens here
+                const data = await fetchWeatherFromServer(country);
+
+                // Update UI with Result
+                display.innerHTML = `
+                    <div class="temp">${data.temp}</div>
+                    <div class="status">${data.cond}</div>
+                `;
+            } catch (error) {
+                // If the promise rejects, we land here
+                display.innerHTML = `<div class="error-msg">${error}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
